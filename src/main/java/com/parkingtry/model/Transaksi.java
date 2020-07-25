@@ -50,21 +50,19 @@ public class Transaksi {
 	private String paymentMethod;
 	
 	
-	@Column(name = "kendaraan")
-	private String kendaraan;
 	
 	@Column(name = "\"jenisKendaraan\"")
-	private String jenisLendaraan;
+	private String jenisKendaraan;
 	
 	
 	
-	public String getJenisLendaraan() {
-		return jenisLendaraan;
+	public String getJenisKendaraan() {
+		return jenisKendaraan;
 	}
 
 
-	public void setJenisLendaraan(String jenisLendaraan) {
-		this.jenisLendaraan = jenisLendaraan;
+	public void setJenisKendaraan(String jenisLendaraan) {
+		this.jenisKendaraan = jenisLendaraan;
 	}
 
 
@@ -161,16 +159,6 @@ public class Transaksi {
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
-	}
-
-
-	public String getKendaraan() {
-		return kendaraan;
-	}
-
-
-	public void setKendaraan(String kendaraan) {
-		this.kendaraan = kendaraan;
 	}
 
 
