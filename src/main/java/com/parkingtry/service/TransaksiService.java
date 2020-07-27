@@ -31,4 +31,10 @@ public class TransaksiService {
 
 	}
 	
+	public List<Transaksi> getReport(String merchant,String status) {
+		
+		return trDao.getReportByMechantStatus(merchant, status);
+
+	}
+	
 }

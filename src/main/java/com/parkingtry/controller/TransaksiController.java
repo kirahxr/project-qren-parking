@@ -52,6 +52,20 @@ public class TransaksiController {
 		
 	}
 	
+	@GetMapping(value = "/transaksi-report-status",params = {"merchant","status"})
+	public ResponseEntity<?> findByReport(String merchant,String status){
+		List<Transaksi> tar;
+		try {
+			tar = trs.getReport(merchant, status);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		}
+		
+		return ResponseEntity.ok(tar);
+		
+	}
+	
 	@GetMapping(value = "/transaksi-report",params = {"start","end","merchant"})
 	public ResponseEntity<?> findByReport(String start,String end,String merchant){
 		List<Transaksi> tar;

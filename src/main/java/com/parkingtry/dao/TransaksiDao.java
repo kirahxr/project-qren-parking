@@ -75,6 +75,26 @@ public class TransaksiDao extends CommonDao {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Transaksi> getReportByMechantStatus(String merchant,String status){
+		StringBuilder sql = new StringBuilder();
+		sql.append("FROM Transaksi");
+		sql.append(" where idjuru.merchantApiKey.merchantApiKey=:merchant");
+		status = status.trim();
+		if(status!= null || status != "") {
+			sql.append(" and lower(status) like:status");
+		}
+		System.out.println("qee" +sql.toString());
+		List<Transaksi> data = super.entityManager.createQuery(sql.toString())
+				.setParameter("merchant",merchant)
+				.setParameter("status", "%"+status.toLowerCase()+"%")
+				.getResultList();
+		System.out.println("data"+data.size());
+		
+		return data;
+		
+	}
+	
 	
 
 }

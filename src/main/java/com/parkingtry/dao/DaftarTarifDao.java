@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.parkingtry.model.DaftarTarif;
-import com.parkingtry.model.JuruParkir;
 
 @Transactional
 @Repository("daftarTarif")
