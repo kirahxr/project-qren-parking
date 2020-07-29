@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+  web:
+    build: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./dashboard:/var/lib/maven-project
+
+volumes:
+  dashboard:
+
