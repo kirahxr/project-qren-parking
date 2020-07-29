@@ -2,6 +2,7 @@ package com.parkingtry.service;
 
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,23 @@ public class MerchantService {
 	
 	public Merchant findById(String id) {
 		return merDao.findById(id);
+	}
+	
+	public void changePassword(String id,HashMap<String, String> old) throws Exception {
+		Merchant oldData = merDao.findById(id);
+		if(oldData.getPassword().equals(old.get("oldPassword"))) {
+			oldData.setPassword(old.get("newPassword"));
+			try {
+				
+				merDao.saveMerchant(oldData);
+				
+			} catch (Exception e) {
+					throw new Exception("Execution Failed");
+			}
+		}
+		else {
+			throw new Exception("Password Did Not Macth");
+		}
 	}
 	
 	public void updateMerChant(Merchant merchant) {

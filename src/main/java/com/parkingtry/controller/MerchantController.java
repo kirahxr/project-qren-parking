@@ -85,6 +85,29 @@ public class MerchantController {
 		
 	}
 	
+	@PostMapping("/update-password/{id}")
+	public ResponseEntity<?> updatePassword(@PathVariable("id") String id,@RequestBody HashMap<String,String> merchant){
+
+		try {
+			 
+			merService.changePassword(id, merchant);
+		
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e);
+
+			// TODO: handle exception
+		}
+		
+		return ResponseEntity.ok("Update Password Sukses");
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/merchant/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") String id){
